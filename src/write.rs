@@ -229,7 +229,6 @@ pub(crate) mod zip_writer {
 
         /// Gets a reference to the underlying writer in this ZipWrite.
         pub fn get_mut(&mut self) -> &mut W {
-            use MaybeEncrypted::*;
             use GenericZipWriter::*;
             match &mut self.inner {
                 Closed => panic!("Can't get underlying writer of closed archive"),
