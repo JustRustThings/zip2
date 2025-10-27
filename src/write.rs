@@ -1234,7 +1234,6 @@ impl<W: Write + Seek> ZipWriter<W> {
                 self.inner = Storer(MaybeEncrypted::Unencrypted(writer.finish()?));
             }
             Storer(MaybeEncrypted::ZipCrypto(writer)) => {
-                let crc32 = self.stats.hasher.clone().finalize();
                 self.inner = Storer(MaybeEncrypted::Unencrypted(writer.finish()?))
             }
             Storer(MaybeEncrypted::Unencrypted(w)) => {
